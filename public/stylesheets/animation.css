@@ -1,0 +1,151 @@
+:root {
+    --purple-color: #9e31c9;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap');
+/* Index.html greetings text animation */
+
+@keyframes showTopText {
+    0% {
+        transform: translate3d(0, 100%, 0);
+    }
+    40%, 60% {
+        transform: translate3d(0, 50%, 0);
+    }
+    100% {
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes showBottomText {
+    0% {
+        transform: translate3d(0, -100%, 0);
+    }
+    100% {
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+.animated-title {
+    color: rgba(34, 34, 34);
+    font-family: 'Raleway', sans-serif;
+    height: 100vh;
+    left: 50%;
+    position: absolute;
+    top: 55%;
+    transform: translate(-50%, -50%);
+    width: 100vmin;
+    padding-left: 25%;
+}
+
+.animated-title>div {
+    height: 25%;
+    overflow: hidden;
+    position: absolute;
+    width: 52%;
+    font-weight: 600;
+}
+
+.animated-title>div div {
+    font-size: 6vmin;
+    padding: 2vmin 0;
+    position: absolute;
+}
+
+.animated-title>div div span {
+    display: block;
+}
+
+.animated-title>div.text-top {
+    border-bottom: 1vmin solid rgb(0, 0, 0);
+    top: 0;
+    font-weight: 600;
+}
+
+.animated-title>div.text-top div {
+    animation: showTopText 1s;
+    animation-delay: 0.5s;
+    animation-fill-mode: forwards;
+    bottom: 0;
+    transform: translate(0, 100%);
+}
+
+.animated-title>div.text-bottom {
+    bottom: 50%;
+    color: white;
+}
+
+.animated-title>div.text-bottom div {
+    animation: showBottomText 0.5s;
+    animation-delay: 2s;
+    animation-fill-mode: forwards;
+    top: 0;
+    transform: translate(0, -100%);
+    font-size: 2rem;
+}
+
+.inline-color {
+    color: var(--purple-color);
+    font-weight: 600;
+}
+
+/* Fade-up texts */
+
+@keyframes fadeInUp {
+    from {
+        transform: translate3d(0, 40px, 0)
+    }
+    to {
+        transform: translate3d(0, 0, 0);
+        opacity: 1
+    }
+}
+
+@-webkit-keyframes fadeInUp {
+    from {
+        transform: translate3d(0, 40px, 0)
+    }
+    to {
+        transform: translate3d(0, 0, 0);
+        opacity: 1
+    }
+}
+
+.animated {
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-fill-mode: both
+}
+
+.animatedFadeInUp {
+    opacity: 0
+}
+
+.fadeInUp {
+    opacity: 0;
+    animation-name: fadeInUp;
+    -webkit-animation-name: fadeInUp;
+}
+
+/* Media query */
+
+@media only screen and (min-width: 768px) {
+    .animated-title {
+        color: rgba(34, 34, 34);
+        font-family: 'Raleway', sans-serif;
+        height: 100vh;
+        left: 25%;
+        position: absolute;
+        top: 70%;
+        transform: translate(-25%, -50%);
+        width: 100vmin;
+        padding-left: unset;
+    }
+    .animated-title>div.text-top {
+        font-weight: 500;
+    }
+    .animated-title>div.text-bottom div {
+        font-size: 3.5rem;
+    }
+}

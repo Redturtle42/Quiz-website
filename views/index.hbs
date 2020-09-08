@@ -1,0 +1,73 @@
+<!-- BODY -->
+
+<body class="index-svg-background">
+    <div class="box triangle">
+    </div>
+    <div class="container">
+        <div class="index-main-text-mini  animated animatedFadeInUp fadeInUp">
+            <p>If you are in doubt about what <span class="inline-color">level</span> you are at <span
+                    class="inline-color">IT</span> technologies, it'sthe time to <span class="inline-color">test</span>
+                yourself.
+            </p>
+        </div>
+        <div class="index-main-text-big  animated animatedFadeInUp fadeInUp">
+            <p>If<br> you are<br> in doubt about<br> what <span class="inline-color">level</span> you are<br> at <span
+                    class="inline-color">IT</span> technologies, it's<br>the time to
+                <span class="inline-color">test</span> yourself.
+            </p>
+        </div>
+    </div>
+    <div class="animated-title">
+        <div class="text-top">
+            <div>
+                <span class="text-white">TEST</span>
+                <span>Your Knowledge of</span>
+            </div>
+        </div>
+        <div class="text-bottom">
+            <div>IT</div>
+        </div>
+    </div>
+    <div class="container text-center choose-text">
+        <h2>You can choose from the quizzes below:</h2>
+        <div class="container">
+            <div class="container quiz-selection-card-container">
+                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
+                    {{#each categories}}
+                    <a href="question-page.hbs">
+                        <div class="col mb-4">
+                            <div class="card index-main-card">
+                                <img src="{{image_src}}" class="card-img-top mt-1 mb-1" alt="html-icon">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{title}}</h5>
+                                    <p class="card-text">{{content}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+        <!-- FOOTER -->
+
+        <footer class="container-fluid text-uppercase">
+            <div>
+                <p>Designed by Redturtle</p>
+            </div>
+        </footer>
+        <!-- SCRIPT -->
+
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+            integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+            crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+            integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+            crossorigin="anonymous"></script>
+
+</body>
+
+</html>
