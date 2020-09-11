@@ -26,42 +26,4 @@ router.get('/:id', async function (req, res, next) {
 
 });
 
-
-
 module.exports = router;
-
-
-
-
-/*  .select('questions.*', 'possible_answers.*', 'categories.*')
-    .join('possible_answers', 'possible_answers.question_id', '=', 'questions.id')
-    .join('categories', 'categories.id', '=', 'questions.category_id')
-    .where(subquery)
-    .groupBy('questions.text') */
-
-/*  .select('*').from('questions')
-
-
-for (const item in my_list) {
- console.log('in foreach', item.text);
-*/
-
-/* const answers = await knex('possible_answers')
-    .select('answers').from('possible_answers')
-    .where('question_id', '=', item.id);
-item.answers = answers;
-}*/
-
-    // console.log(quiz_list);
-
-/* const dummy_data = [
-    {
-        "question": "Dummy question",
-        "answers": [
-            { "text": "answer-1", "isCorrect": true },
-            { "text": "answer-2", "isCorrect": false },
-            { "text": "answer-3", "isCorrect": false },
-        ],
-        "category": "HTML"
-    }
-] */
