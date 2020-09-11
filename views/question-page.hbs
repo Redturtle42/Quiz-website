@@ -2,43 +2,40 @@
 
 <body class="question-background">
 
-    <div class="container question-page-main-back-container rounded">
+    {{#each item_list}}
+
+    <div class="container question-page-main-back-container rounded" id="iterate">
         <div class="type-of-quiz d-flex justify-content-between">
             <span class="mt-4 mb-4">
                 <h5>1/10</h5>
             </span>
             <span class="mt-4 mb-4">
-                <h1 class="font-weight-bold">HTML</h1>
+                <h1 class="font-weight-bold">{{title}}</h1>
             </span>
         </div>
-        <div class=" question-page-main-container d-flex align-items-center">
+        <div class=" question-page-main-container d-flex align-items-center" id="hide">
             <div class="list-group container p-0 mt-1 mb-1">
                 <div class="list-group question-row">
-                    <a class="border-0 list-group-item mb-4 text-center rounded" disabled>Question1: Lorem ipsum
-                        dolor sit, amet consectetur adipisicing elit. Voluptatibus, odit.</a>
-                    <a href="#" type="button"
-                        class=" border-0 mt-1 mb-1 list-group-item list-group-item-action list-group-item-light rounded">Lorem
-                        ipsum
-                        dolor sit, amet consectetur adipisicing elit. Voluptatibus, odit.Lorem
-                        ipsumLorem
-                        ipsum
+                    <a class="border-0 list-group-item mb-4 text-center rounded" disabled>{{question}}</a>
+                    {{#each answer}}
+                    <a href="#" type="submit"
+                        class=" border-0 mt-1 mb-1 list-group-item list-group-item-action list-group-item-light rounded"
+                        onclick="pressed()">
+                        {{this}}
                     </a>
-                    <a href="#" type="button"
-                        class="border-0 mt-1 mb-1 list-group-item list-group-item-action list-group-item-light rounded">Lorem
-                        ipsum
-                        dolor sit, amet consectetur adipisicing elit. Voluptatibus, odit.</a>
-                    <a href="#" type="button"
-                        class="border-0 mt-1 mb-4 list-group-item list-group-item-action list-group-item-light rounded">Lorem
-                        ipsum
-                        dolor sit, amet consectetur adipisicing elit. Voluptatibus, odit.</a>
+                    {{/each}}
                 </div>
                 <span class="d-flex justify-content-between mt-4 mb-4 ">
-                    <a type="submit" href="#" class="btn btn-outline-info">PREVIOUS</a>
-                    <a type="submit" href="#" class="btn btn-outline-success">NEXT</a>
+                    <a type="submit" href="#" class="btn btn-outline-info" onclick="previous_question()">PREVIOUS</a>
+                    <a type="submit" href="#" class="btn btn-outline-success" onclick="next_question()">NEXT</a>
                 </span>
             </div>
         </div>
     </div>
+    {{/each}}
+
+
+
 
     <!-- SCRIPT -->
 
