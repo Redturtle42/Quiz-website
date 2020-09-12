@@ -3,6 +3,7 @@ exports.up = function (knex) {
         table.increments().primary();
         table.string('title', 50).notNull();
         table.string('content', 500);
+        /* Itt az image */
         table.string('image_src').notNull();
     });
 };

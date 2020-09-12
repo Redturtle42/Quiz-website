@@ -1,37 +1,65 @@
 <!-- BODY -->
 
 <body class="question-background">
-
-    {{#each item_list}}
-
-    <div class="container question-page-main-back-container rounded" id="iterate">
-        <div class="type-of-quiz d-flex justify-content-between">
-            <span class="mt-4 mb-4">
-                <h5>1/10</h5>
-            </span>
-            <span class="mt-4 mb-4">
-                <h1 class="font-weight-bold">{{title}}</h1>
-            </span>
-        </div>
-        <div class=" question-page-main-container d-flex align-items-center" id="hide">
-            <div class="list-group container p-0 mt-1 mb-1">
-                <div class="list-group question-row">
-                    <a class="border-0 list-group-item mb-4 text-center rounded" disabled>{{question}}</a>
-                    {{#each answer}}
-                    <a href="#" type="submit"
-                        class=" border-0 mt-1 mb-1 list-group-item list-group-item-action list-group-item-light rounded"
-                        onclick="pressed()">
-                        {{this}}
-                    </a>
-                    {{/each}}
-                </div>
-                <span class="d-flex justify-content-between mt-4 mb-4 ">
-                    <a type="submit" href="#" class="btn btn-outline-info" onclick="previous_question()">PREVIOUS</a>
-                    <a type="submit" href="#" class="btn btn-outline-success" onclick="next_question()">NEXT</a>
+    <form class="#">
+        {{#each item_list}}
+        <div class="container question-page-main-back-container rounded" id="iterate">
+            <div class="type-of-quiz d-flex justify-content-between">
+                <span class="mt-4 mb-4">
+                    <h5>1/10</h5>
+                </span>
+                <span class="mt-4 mb-4">
+                    <h1 class="font-weight-bold">{{title}}</h1>
                 </span>
             </div>
+            <div class=" question-page-main-container d-flex align-items-center" id="hide">
+                <div class="list-group container p-0 mt-1 mb-1">
+                    <div class="list-group question-row">
+                        <a class="border-0 list-group-item mb-4 text-center rounded" disabled>{{question}}</a>
+
+                        {{!-- {{#each answer}}
+                        <a href="#" type="submit"
+                        class=" border-0 mt-1 mb-1 list-group-item list-group-item-action list-group-item-light rounded"
+                        onclick="pressed()">
+                        {{this.text}}, Ez az id: {{this.id}}
+                        </a>   
+                        {{/each}}--}}
+
+                        {{!--  {{#each answer}}
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2"
+                                value="{{this.id}}">
+                            <label class="form-check-label" for="exampleRadios2">
+                                <h5>
+                                    {{this.text}}, Ez az id: {{this.id}}</h5>
+                            </label>
+                        </div>
+                        {{/each}}
+ --}}
+
+                        <div class="btn-group-toggle" data-toggle="buttons">
+                            {{#each answer}}
+                            <label class="btn btn-info d-block  mt-2 mb-2">
+
+                                <input type="radio" name="{{id}}" id="option2" autocomplete="off" value="{{this.id}}">
+                                {{this.text}}, Ez az id: {{this.id}}
+
+                            </label>
+
+                            {{/each}}
+                        </div>
+
+
+                    </div>
+                    <span class="d-flex justify-content-between mt-4 mb-4 ">
+                        <a type="submit" href="#" class="btn btn-outline-info"
+                            onclick="previous_question()">PREVIOUS</a>
+                        <a type="submit" href="#" class="btn btn-outline-success" onclick="next_question()">NEXT</a>
+                    </span>
+                </div>
+            </div>
         </div>
-    </div>
+    </form>
     {{/each}}
 
 

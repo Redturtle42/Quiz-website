@@ -4,6 +4,7 @@ exports.seed = async (knex) => {
   const categories = [{
     title: 'HTML',
     content: 'HTML is the standard markup language for Web pages.',
+    /* Itt az Image */
     image_src: 'html-icon.png'
   },
   {

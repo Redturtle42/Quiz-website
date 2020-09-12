@@ -4,68 +4,38 @@ exports.seed = function (knex) {
       return knex('answers').insert([
         {
           question: "What does HTML stand for?",
-          answer: '{"items": ["Hyper Text Markup Language?","Home Tool Markup Language","Hyperlinks and Text Markup Language"]}',
-          is_correct: 0,
+          answer: '{"items": [{ "text": "Hyper Text Markup Language?", "id": 1 },{ "text": "Home Tool Markup Language", "id": 2 },{ "text": "Hyperlinks and Text Markup Language", "id": 3 }]}',
+          is_correct: 1,
           category_id: 1
         },
         {
           question: "What is the correct HTML element for inserting a line break?",
-          answer: '{"items": ["<br>","<break>","<lb>"]}',
-          is_correct: 0,
-          category_id: 1
-        },
-        {
-          question: "Which character is used to indicate an end tag?",
-          answer: '{"items": ["/","*","<"]}',
-          is_correct: 0,
-          category_id: 1
-        },
-        {
-          question: "How can you make a numbered list?",
-          answer: '{"items": ["<ol>","<dl>","<ul>"]}',
-          is_correct: 0,
-          category_id: 1
-        },
-        {
-          question: "In HTML, which attribute is used to specify that an input field must be filled out?",
-          answer: '{"items": ["required","placeholder","validate"]}',
-          is_correct: 0,
+          answer: '{"items": [{ "text":"<br>", "id": 1},{ "text":"<break>", "id": 2},{"text":"<lb>", "id": 3}]}',
+          is_correct: 1,
           category_id: 1
         },
         {
           question: "Which HTML element defines navigation links?",
-          answer: '{"items": ["<nav>","<navigation>","<navigate>"]}',
-          is_correct: 0,
-          category_id: 1
-        },
-        {
-          question: "The HTML <canvas> element is used to:",
-          answer: '{"items": ["draw graphics","create draggable elements","display database records"]}',
-          is_correct: 0,
-          category_id: 1
-        },
-        {
-          question: "Which HTML element defines navigation links?",
-          answer: '{"items": ["<nav>","<navigation>","<navigate>"]}',
-          is_correct: 0,
+          answer: '{"items": [{ "text":"<nav>", "id": 1},{"text":"<navigation>", "id": 2},{"text":"<navigate>", "id": 3}]}',
+          is_correct: 1,
           category_id: 2
         },
         {
           question: "The HTML <canvas> element is used to:",
-          answer: '{"items": ["draw graphics","create draggable elements","display database records"]}',
-          is_correct: 0,
+          answer: '{"items": [{ "text":"draw graphics", "id": 1},{"text":"create draggable elements", "id": 2},{"text":"display database records", "id": 3}]}',
+          is_correct: 1,
           category_id: 2
         },
         {
           question: "Which HTML element defines navigation links?",
-          answer: '{"items": ["<nav>","<navigation>","<navigate>"]}',
-          is_correct: 0,
+          answer: '{"items": [{ "text":"<nav>", "id": 1},{"text":"<navigation>", "id": 2},{"text":"<navigate>", "id": 3}]}',
+          is_correct: 1,
           category_id: 3
         },
         {
           question: "The HTML <canvas> element is used to:",
-          answer: '{"items": ["draw graphics","create draggable elements","display database records"]}',
-          is_correct: 0,
+          answer: '{"items": [{ "text":"draw graphics", "id": 1},{"text":"create draggable elements", "id": 2},{"text":"display database records", "id": 3}]}',
+          is_correct: 1,
           category_id: 3
         }
       ]);
