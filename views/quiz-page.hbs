@@ -1,0 +1,55 @@
+<body class="question-background ">
+    <form name="quiz_form" method="POST" action="/result">
+        {{#each item_list}}
+        <div class="container question-page-main-back-container rounded col-12 col-md-10 col-lg-6 col-xl-4 index-svg-background"
+            id="iterate">
+            <div class="type-of-quiz d-flex justify-content-between">
+                <span class="mt-4 mb-4">
+                    <h5>{{incremented @index}} / {{../item_list.length}}</h5>
+                </span>
+                <span class="mt-4 mb-4">
+                    <h3 class="font-weight-bold">{{type}}</h3>
+                </span>
+            </div>
+            <div class=" question-page-main-container d-flex align-items-center" id="hide">
+                <div class="list-group container p-0 mt-1 mb-1">
+                    <div class="list-group question-row">
+                        <a class="border-0 list-group-item mb-4 text-center rounded" disabled>{{question}}
+                            ({{id}})</a>
+                        <div class="btn-group-toggle" data-toggle="buttons">
+                            <input type="radio" class="radioclass" name="{{id}}" autocomplete="off" value="0" checked
+                                hidden>
+                            {{#each answer}}
+                            <label class="btn btn-outline-info d-block mt-2 mb-2 selectGroup text-dark">
+                                <input type="radio" name="{{../id}}" id="{{this.id}}" autocomplete="off"
+                                    value="{{this.id}}">
+                                {{this.text}}, Ez az id: {{this.id}}
+                            </label>
+                            {{/each}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+
+        <div class="d-flex justify-content-center">
+            <input type="submit" class="btn btn-success btn-lg mb-4" value="Finish test"></input>
+        </div>
+    </form>
+
+    <!-- SCRIPT -->
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>
