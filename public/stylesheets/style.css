@@ -82,9 +82,11 @@ footer p {
   letter-spacing: 1px;
 }
 
+/* Media Query */
+
 @media only screen and (min-width: 768px) {
   .triangle {
-    width: 99vw;
+    width: 98vw;
     height: 95vh;
     background: -webkit-linear-gradient(to right, #8E2DE2, #4A00E0);
     background: linear-gradient(to right, #8E2DE2, #4A00E0);

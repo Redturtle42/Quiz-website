@@ -1,7 +1,7 @@
 exports.seed = function (knex) {
-  return knex('answers').del()
+  return knex('quiz').del()
     .then(function () {
-      return knex('answers').insert([
+      return knex('quiz').insert([
         {
           question: "What does HTML stand for?",
           answer: '{"items": [{ "text": "Hyper Text Markup Language?", "id": 1 },{ "text": "Home Tool Markup Language", "id": 2 },{ "text": "Hyperlinks and Text Markup Language", "id": 3 }]}',

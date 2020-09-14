@@ -1,41 +1,43 @@
-<!-- BODY -->
-
-<body class="question-background">
+<body class="question-background ">
     <form name="quiz_form" method="POST" action="/result">
-        <p>{{item_list.length}}, Questions number</p>
         {{#each item_list}}
-        <div class="container question-page-main-back-container rounded" id="iterate">
+        <div class="container question-page-main-back-container rounded col-12 col-md-10 col-lg-6 col-xl-4 index-svg-background"
+            id="iterate">
             <div class="type-of-quiz d-flex justify-content-between">
                 <span class="mt-4 mb-4">
-                    <h5>1/10</h5>
+                    <h5>{{incremented @index}} / {{../item_list.length}}</h5>
                 </span>
                 <span class="mt-4 mb-4">
-                    <h1 class="font-weight-bold">{{title}}</h1>
+                    <h3 class="font-weight-bold">{{type}}</h3>
                 </span>
             </div>
             <div class=" question-page-main-container d-flex align-items-center" id="hide">
                 <div class="list-group container p-0 mt-1 mb-1">
                     <div class="list-group question-row">
-                        <a class="border-0 list-group-item mb-4 text-center rounded" disabled>{{question}} ({{id}})</a>
+                        <a class="border-0 list-group-item mb-4 text-center rounded" disabled>{{question}}
+                            ({{id}})</a>
                         <div class="btn-group-toggle" data-toggle="buttons">
+                            <input type="radio" class="radioclass" name="{{id}}" autocomplete="off" value="0" checked
+                                hidden>
                             {{#each answer}}
-                            <label class="btn btn-info d-block mt-2 mb-2 selectGroup">
-                                <input type="radio" class="radioclass" name="{{../id}}" id="{{this.id}}"
-                                    autocomplete="off" value="{{this.id}}">
+                            <label class="btn btn-outline-info d-block mt-2 mb-2 selectGroup text-dark">
+                                <input type="radio" name="{{../id}}" id="{{this.id}}" autocomplete="off"
+                                    value="{{this.id}}">
                                 {{this.text}}, Ez az id: {{this.id}}
                             </label>
                             {{/each}}
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
         {{/each}}
-        <span class="d-flex justify-content-between mt-4 mb-4">
-            <input type="submit" class="btn btn-outline-success " value="Finish test"></input>
-        </span>
+
+        <div class="d-flex justify-content-center">
+            <input type="submit" class="btn btn-success btn-lg mb-4" value="Finish test"></input>
+        </div>
     </form>
+
     <!-- SCRIPT -->
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"

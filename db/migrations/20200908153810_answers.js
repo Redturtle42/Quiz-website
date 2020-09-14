@@ -1,5 +1,5 @@
 exports.up = function (knex) {
-    return knex.schema.createTable('answers', table => {
+    return knex.schema.createTable('quiz', table => {
         table.increments().primary();
         table.string('question', 255).notNull();
         table.json('answer', 500).notNull();
@@ -9,5 +9,5 @@ exports.up = function (knex) {
     });
 };
 exports.down = function (knex) {
-    return knex.schema.dropTable('answers');
+    return knex.schema.dropTable('quiz');
 };

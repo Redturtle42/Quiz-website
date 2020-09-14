@@ -1,17 +1,18 @@
 const express = require('express');
 const knex = require('../db/knex');
+const Handlebars = require('hbs');
 const { join } = require('../db/knex');
 const { json } = require('express');
 
 const router = express.Router();
 
-/* GET question page. */
+/* GET quiz page. */
 router.get('/:id', async function (req, res, next) {
     const title_id = req.params.id;
-    const quiz_list = await knex('answers')
-        .select('answers.*', 'categories.title').from('answers')
-        .join('categories', 'categories.id', '=', 'answers.category_id')
-        .where('categories.title', title_id)
+    const quiz_list = await knex('quiz')
+        .select('quiz.*', 'categories.type').from('quiz')
+        .join('categories', 'categories.id', '=', 'quiz.category_id')
+        .where('categories.type', title_id)
         .then((db_response) => {            //this is an array. After the sql query.
             for (let i = 0; i < db_response.length; i++) {
                 const answer_list = JSON.parse(db_response[i].answer).items;
@@ -23,7 +24,12 @@ router.get('/:id', async function (req, res, next) {
         }).catch((err) => {
             console.log('ERROR:', err);
         })
-    res.render('question-page', { title: "Quiz page", item_list: quiz_list });
+    Handlebars.registerHelper('incremented', function (index) {
+        index++;
+        return index;
+    });
+
+    res.render('quiz-page', { title: "Quiz", item_list: quiz_list, });
 
 });
 

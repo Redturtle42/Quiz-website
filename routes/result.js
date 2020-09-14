@@ -1,48 +1,49 @@
 const express = require('express');
 const knex = require('../db/knex');
-
 const router = express.Router();
 
-/* GET question page. */
 router.post('/', async function (req, res, next) {
-    const quiz_result = Object.entries(req.body);       //Parse object to array
+    const arrayOfSelectedAnswers = Object.entries(req.body);       //Parse object to array
+    console.log("arrayOfSelectedAnswers is", arrayOfSelectedAnswers);
 
-    let count = 0;
-    for (let i = 0; i < quiz_result.length; i++) {
-        const question_id = quiz_result[i][0];
-        const user_answer = quiz_result[i][1];
+    let correctAnswers = 0;
+    for (let i = 0; i < arrayOfSelectedAnswers.length; i++) {
+        const question_id = arrayOfSelectedAnswers[i][0];
+        const user_answer = arrayOfSelectedAnswers[i][1];
 
-        let correct_answer = await knex('answers')
-            .select('is_correct', 'answers.question').from('answers')
-            .where('answers.id', '=', question_id)
+        let correct_answer = await knex('quiz')
+            .select('is_correct', 'quiz.question').from('quiz')
+            .where('quiz.id', '=', question_id)
         correct_answer = correct_answer[0].is_correct;      //unpack RowDataPacket
 
         if (user_answer == correct_answer) {
-            count++;
+            correctAnswers++;
         }
     };
 
-    let categoryId = await knex('answers')
-        .select('category_id').from('answers')
-        .where('id', '=', quiz_result[0][0])
+    let idOfQuizType = await knex('quiz')
+        .select('category_id').from('quiz')
+        .where('id', '=', arrayOfSelectedAnswers[0][0])
 
-    categoryId = categoryId[0].category_id;
+    idOfQuizType = idOfQuizType[0].category_id;
 
-    console.log(categoryId);
-
-    let question_amount = await knex('answers')
+    let numberOfQuestions = await knex('quiz')
         .select('category_id').count('*', { as: 'sumOfQuestion' })
-        .from('answers')
-        .where('category_id', '=', categoryId)
+        .from('quiz')
+        .where('category_id', '=', idOfQuizType)
         .groupBy('category_id');
+    numberOfQuestions = numberOfQuestions[0].sumOfQuestion;     //unpack RowDataPacket
 
-    question_amount = question_amount[0].sumOfQuestion;
+    let typeOfQuiz = await knex('categories')
+        .select('categories.type')
+        .from('categories')
+        .join('quiz', 'quiz.category_id', '=', 'categories.id')
+        .where('categories.id', '=', idOfQuizType)
+        .groupBy('categories.type')
 
-    console.log(question_amount);
+    typeOfQuiz = typeOfQuiz[0].type;     //unpack RowDataPacket
 
-
-    res.render('result-score', { title: 'Result', correct: count, total: question_amount });
+    res.render('result-page', { title: "Result", correctAnswers, numberOfQuestions, typeOfQuiz });
 });
-
 
 module.exports = router;

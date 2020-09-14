@@ -4,9 +4,10 @@
 }
 
 .question-page-main-back-container {
-    background-color: rgba(245, 245, 245, 0.897);
+    background-color: rgba(245, 245, 245, 0.95);
     width: 98vw;
-    margin-bottom: 1%;
+    margin: 25px auto;
+    margin-top: 50px;
 }
 
 .question-row a:first-child {
@@ -23,12 +24,11 @@
     font-size: 1rem;
 }
 
+/* Media Query */
+
 @media only screen and (min-width: 768px) {
     .question-page-main-back-container {
-        width: 50vw;
-        background-color: rgba(245, 245, 245, 0.897);
-        min-height: 50vh;
-        max-height: 90vh;
+        background-color: rgba(245, 245, 245, 0.95);
     }
     .question-row a:first-child {
         font-size: 1.2rem;

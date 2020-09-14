@@ -1,8 +1,5 @@
-<!-- BODY -->
-
 <body class="index-svg-background">
-    <div class="box triangle">
-    </div>
+    <div class="box triangle"></div>
     <div class="container">
         <div class="index-main-text-mini  animated animatedFadeInUp fadeInUp">
             <p>If you are in doubt about what <span class="inline-color">level</span> you are at <span
@@ -34,14 +31,13 @@
             <div class="container quiz-selection-card-container">
                 <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
                     {{#each categories}}
-                    <a href="question/{{title}}">
-                        <div class="col mb-4">
+                    <a href="quiz/{{type}}">
+                        <div class=" col mb-4">
                             <div class="card index-main-card">
-                                {{!--  Itt az image--}}
                                 <img src="{{image_src}}" class="card-img-top mt-1 mb-1" alt="html-icon">
                                 <div class="card-body">
-                                    <h5 class="card-title">{{title}}</h5>
-                                    <p class="card-text">{{content}}</p>
+                                    <h5 class="card-title">{{type}}</h5>
+                                    <p class="card-text">{{description}}</p>
                                 </div>
                             </div>
                         </div>
@@ -51,6 +47,7 @@
             </div>
         </div>
     </div>
+
     <!-- FOOTER -->
 
     <footer class="container-fluid text-uppercase">
