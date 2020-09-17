@@ -8,7 +8,9 @@ const router = express.Router();
 
 /* GET quiz page. */
 router.get('/:id', async function (req, res, next) {
+    const size = req.query.size;
     const title_id = req.params.id;
+
     const quiz_list = await knex('quiz')
         .select('quiz.*', 'categories.type').from('quiz')
         .join('categories', 'categories.id', '=', 'quiz.category_id')
@@ -20,6 +22,8 @@ router.get('/:id', async function (req, res, next) {
                 db_response[i].answer = answer_list;
             }
             shuffle(db_response);
+
+            db_response = db_response.slice(0, size);
             return db_response;
 
         }).catch((err) => {

@@ -103,13 +103,13 @@ exports.seed = function (knex) {
           answer: '{"items": [{ "text":"static", "id": 1},{"text":"relative", "id": 2},{"text":"absolute", "id": 3}]}',
           is_correct: 1,
           category_id: 2
-        }, ,
+        },
         {
           question: "Which in not a CSS type??",
           answer: '{"items": [{ "text":"outline", "id": 1},{"text":"inline", "id": 2},{"text":"external", "id": 3}]}',
           is_correct: 1,
           category_id: 2
-        }, ,
+        },
         {
           question: "What property should we use to restore the default value?",
           answer: '{"items": [{ "text":"initial", "id": 1},{"text":"inherit", "id": 2},{"text":"none", "id": 3}]}',

@@ -31,18 +31,20 @@
             <div class="container quiz-selection-card-container">
                 <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
                     {{#each categories}}
-                    <a href="quiz/{{type}}">
-                        <div class=" col mb-4">
-                            <div class="card index-main-card">
-                                <img src="{{image_src}}" class="card-img-top mt-1 mb-1" alt="html-icon">
-                                <div class="card-body">
-                                    <h5 class="card-title">{{type}}</h5>
-                                    <p class="card-text">{{description}}</p>
-                                </div>
+                    <div class="col mb-4">
+                        <div class="card index-main-card">
+                            <img src="{{image_src}}" class="card-img-top mt-1 mb-1" alt="html-icon">
+                            <div class="card-body">
+                                <h5 class="card-title">{{type}}</h5>
+                                <p class="card-text">{{description}}</p>
+                            </div>
+                            <div class="card-body">
+                                <a href="quiz/{{type}}?size=5" class="card-link h6 text-info ml-4 mr-4">Easy</a>
+                                <a href="quiz/{{type}}?size=10" class="card-link h6 text-info ml-4 mr-4">Hard</a>
                             </div>
                         </div>
-                        {{/each}}
-                    </a>
+                    </div>
+                    {{/each}}
                 </div>
             </div>
         </div>
@@ -50,7 +52,7 @@
 
     <!-- FOOTER -->
 
-    <footer class="container-fluid text-uppercase">
+    <footer class=" container-fluid text-uppercase">
         <div>
             <p>Designed by Redturtle</p>
         </div>
