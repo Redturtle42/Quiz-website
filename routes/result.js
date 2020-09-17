@@ -4,7 +4,6 @@ const router = express.Router();
 
 router.post('/', async function (req, res, next) {
     const arrayOfSelectedAnswers = Object.entries(req.body);       //Parse object to array
-    console.log(arrayOfSelectedAnswers);
     let correctAnswers = 0;
     for (let i = 0; i < arrayOfSelectedAnswers.length; i++) {
         const question_id = arrayOfSelectedAnswers[i][0];
@@ -41,10 +40,23 @@ router.post('/', async function (req, res, next) {
         .groupBy('categories.type')
 
     typeOfQuiz = typeOfQuiz[0].type;     //unpack RowDataPacket
-    console.log(typeOfQuiz);
-    console.log(arrayOfSelectedAnswers.length);
 
-    res.render('result-page', { title: "Result", correctAnswers, arrayOfSelectedAnswers, typeOfQuiz });
+    const calculatePersentage = () => {
+        const x = (correctAnswers / arrayOfSelectedAnswers.length) * 100;
+        return x;
+    };
+
+    const statistic = {
+        type_id: idOfQuizType,
+        type_name: typeOfQuiz,
+        number_of_question: arrayOfSelectedAnswers.length,
+        number_of_correct: correctAnswers,
+        percentage: calculatePersentage()
+    };
+
+    await knex('stat').insert(statistic);
+
+    res.render('result-page', { title: "Result", correctAnswers, arrayOfSelectedAnswers, typeOfQuiz, percent: calculatePersentage() });
 });
 
 module.exports = router;
