@@ -33,7 +33,7 @@ router.get('/:id', async function (req, res, next) {
         index++;
         return index;
     });
-
+    console.log(quiz_list);
     res.render('quiz-page', { title: "Quiz", item_list: quiz_list, });
 
 });

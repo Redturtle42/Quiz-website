@@ -4,8 +4,7 @@ const router = express.Router();
 
 router.post('/', async function (req, res, next) {
     const arrayOfSelectedAnswers = Object.entries(req.body);       //Parse object to array
-    console.log("arrayOfSelectedAnswers is", arrayOfSelectedAnswers);
-
+    console.log(arrayOfSelectedAnswers);
     let correctAnswers = 0;
     for (let i = 0; i < arrayOfSelectedAnswers.length; i++) {
         const question_id = arrayOfSelectedAnswers[i][0];
@@ -26,13 +25,13 @@ router.post('/', async function (req, res, next) {
         .where('id', '=', arrayOfSelectedAnswers[0][0])
 
     idOfQuizType = idOfQuizType[0].category_id;
-
-    let numberOfQuestions = await knex('quiz')
-        .select('category_id').count('*', { as: 'sumOfQuestion' })
-        .from('quiz')
-        .where('category_id', '=', idOfQuizType)
-        .groupBy('category_id');
-    numberOfQuestions = numberOfQuestions[0].sumOfQuestion;     //unpack RowDataPacket
+    /* 
+        let numberOfQuestions = await knex('quiz')
+            .select('category_id').count('*', { as: 'sumOfQuestion' })
+            .from('quiz')
+            .where('category_id', '=', idOfQuizType)
+            .groupBy('category_id');
+        numberOfQuestions = numberOfQuestions[0].sumOfQuestion;     //unpack RowDataPacket */
 
     let typeOfQuiz = await knex('categories')
         .select('categories.type')
@@ -42,8 +41,10 @@ router.post('/', async function (req, res, next) {
         .groupBy('categories.type')
 
     typeOfQuiz = typeOfQuiz[0].type;     //unpack RowDataPacket
+    console.log(typeOfQuiz);
+    console.log(arrayOfSelectedAnswers.length);
 
-    res.render('result-page', { title: "Result", correctAnswers, numberOfQuestions, typeOfQuiz });
+    res.render('result-page', { title: "Result", correctAnswers, arrayOfSelectedAnswers, typeOfQuiz });
 });
 
 module.exports = router;
