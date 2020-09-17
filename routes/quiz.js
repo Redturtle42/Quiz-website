@@ -21,6 +21,7 @@ router.get('/:id', async function (req, res, next) {
             }
             shuffle(db_response);
             return db_response;
+
         }).catch((err) => {
             console.log('ERROR:', err);
         })

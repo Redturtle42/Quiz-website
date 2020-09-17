@@ -14,16 +14,20 @@
             <div class=" question-page-main-container d-flex align-items-center" id="hide">
                 <div class="list-group container p-0 mt-1 mb-1">
                     <div class="list-group question-row">
-                        <a class="border-0 list-group-item mb-4 text-center rounded" disabled>{{question}}
-                            ({{id}})</a>
+                        <a class="border-0 list-group-item mb-4 text-center rounded " disabled>
+                            <p class="h5">
+                                {{question}}
+                                ({{id}})</p>
+                        </a>
                         <div class="btn-group-toggle" data-toggle="buttons">
                             <input type="radio" class="radioclass" name="{{id}}" autocomplete="off" value="0" checked
                                 hidden>
                             {{#each answer}}
-                            <label class="btn btn-outline-info d-block mt-2 mb-2 selectGroup text-dark">
+                            <label class="btn btn-info d-block mt-2 mb-2 selectGroup text-dark">
                                 <input type="radio" name="{{../id}}" id="{{this.id}}" autocomplete="off"
                                     value="{{this.id}}">
                                 {{this.text}}, Ez az id: {{this.id}}
+
                             </label>
                             {{/each}}
                         </div>
@@ -34,7 +38,7 @@
         {{/each}}
 
         <div class="d-flex justify-content-center">
-            <input type="submit" class="btn btn-success btn-lg mb-4" value="Finish test"></input>
+            <input type="submit" class="btn btn-danger mb-4" value="Finish test"></input>
         </div>
     </form>
 
