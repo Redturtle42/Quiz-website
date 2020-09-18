@@ -14,12 +14,13 @@ This project requires a running MySQL instance. If you don't have one set up loc
 
 ### Database
 You have to create a database to serve your application:
-
+```sh
 `docker exec -it <container-name> mysql -p`
 `"CREATE DATABASE <database-name>";`
 `ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY 'root';`
 `FLUSH PRIVILEGES;`
 `USE DATABASE <database-name>;`
+```
 
 ### Configuration
 You can find a .env.template file that you have to fill out to fit your needs.
