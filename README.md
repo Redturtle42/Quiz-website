@@ -9,16 +9,21 @@ Used for this project:
 ## Setup
 ### Dependencies
 This project requires a running MySQL instance. If you don't have one set up locally, you can start always a Docker container by the following command:
-
-`docker run --name <container-name> -p 3306:3306 MYSQL_ROOT_PASSWORD=<root user's password> -d mysql`
+```sh
+docker run --name <container-name> -p 3306:3306 MYSQL_ROOT_PASSWORD=<root user's password> -d mysql
+```
 
 ### Database
 You have to create a database to serve your application:
 ```sh
 docker exec -it <container-name> mysql -p
+
 "CREATE DATABASE <database-name>";
+
 ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY 'root';
+
 FLUSH PRIVILEGES;
+
 USE DATABASE <database-name>;
 ```
 
@@ -28,12 +33,17 @@ After you're done, **rename** it to **.env**
 
 ### Dependencies
 To download all dependencies type the following to console:
-`npm install`
+```sh
+npm install
+```
 
 ### Knex
 To fill the database with records:
-`knex migrate:latest`
-`knex seed:run`
+```sh
+knex migrate:latest
+
+knex seed:run
+```
 
 ## Start application
 `npm start`
