@@ -1,45 +1,46 @@
 <body class="question-background ">
-    <form name="quiz_form" method="POST" action="/result">
-        {{#each item_list}}
-        <div class="container question-page-main-back-container rounded col-12 col-md-10 col-lg-6 col-xl-4 index-svg-background"
-            id="iterate">
-            <div class="type-of-quiz d-flex justify-content-between">
-                <span class="mt-4 mb-4">
-                    <h5>{{incremented @index}} / {{../item_list.length}}</h5>
-                </span>
-                <span class="mt-4 mb-4">
-                    <h3 class="font-weight-bold">{{type}}</h3>
-                </span>
-            </div>
-            <div class=" question-page-main-container d-flex align-items-center" id="hide">
-                <div class="list-group container p-0 mt-1 mb-1">
-                    <div class="list-group question-row">
-                        <a class="border-0 list-group-item mb-4 text-center rounded " disabled>
-                            <p class="h5">
-                                {{question}}
-                                ({{id}})</p>
-                        </a>
-                        <div class="btn-group-toggle" data-toggle="buttons">
-                            <input type="radio" class="radioclass" name="{{id}}" autocomplete="off" value="0" checked
-                                hidden>
-                            {{#each answer}}
-                            <label class="btn btn-info d-block mt-2 mb-2 selectGroup text-dark">
-                                <input type="radio" name="{{../id}}" id="{{this.id}}" autocomplete="off"
-                                    value="{{this.id}}">
-                                {{this.text}}, Ez az id: {{this.id}}
-
-                            </label>
-                            {{/each}}
+    <div class="quiz-page-fix-side">
+        <div class=" quiz-page-fix-side-two">
+            <form name="quiz_form" method="POST" action="/result">
+                {{#each item_list}}
+                <div class="container question-page-main-back-container rounded col-12 col-md-10 col-lg-6 col-xl-4 index-svg-background"
+                    id="iterate">
+                    <div class="type-of-quiz d-flex justify-content-between">
+                        <span class="mt-4 mb-4 text-dark">
+                            <h5>{{incremented @index}} / {{../item_list.length}}</h5>
+                        </span>
+                        <span class="mt-4 mb-4">
+                            <h3 class="text-dark">{{type}}</h3>
+                        </span>
+                    </div>
+                    <div class=" question-page-main-container d-flex align-items-center" id="hide">
+                        <div class="list-group container p-0 mt-1 mb-1">
+                            <div class="list-group question-row">
+                                <a class="border-0 list-group-item mb-4 text-center rounded " disabled>
+                                    {{question}}
+                                </a>
+                                <div class="btn-group-toggle" data-toggle="buttons">
+                                    <input type="radio" class="radioclass" name="{{id}}" autocomplete="off" value="0"
+                                        checked hidden>
+                                    {{#each answer}}
+                                    <label class="btn btn-light d-block mt-2 mb-2 text-dark">
+                                        <input type="radio" name="{{../id}}" id="{{this.id}}" autocomplete="off"
+                                            value="{{this.id}}">
+                                        {{this.text}}
+                                    </label>
+                                    {{/each}}
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        {{/each}}
+                {{/each}}
 
-        <div class="d-flex justify-content-center">
-            <input type="submit" class="btn btn-danger mb-4" value="Finish test"></input>
+                <div class="d-flex justify-content-center">
+                    <input type="submit" class="btn btn-danger mb-4" value="Finish test"></input>
+                </div>
+            </form>
         </div>
-    </form>
 
+    </div>
 </body>

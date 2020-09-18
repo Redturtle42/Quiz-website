@@ -50,7 +50,7 @@ exports.seed = function (knex) {
           category_id: 1
         },
         {
-          question: "The HTML <canvas> element is used to:",
+          question: "How can you create a table?",
           answer: '{"items": [{ "text":"<table>", "id": 1},{ "text":"<tb>", "id": 2},{"text":"<td>", "id": 3}]}',
           is_correct: 1,
           category_id: 1

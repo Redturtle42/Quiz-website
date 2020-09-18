@@ -4,17 +4,15 @@
 }
 
 .question-page-main-back-container {
-    background-color: rgba(245, 245, 245, 0.95);
+    background-color: rgba(229, 245, 245, 0.952);
     width: 98vw;
     margin: 25px auto;
-    margin-top: 50px;
 }
 
 .question-row a:first-child {
-    background: -webkit-linear-gradient(to right, #8E2DE2, #4A00E0);
-    background: linear-gradient(to right, #8E2DE2, #4A00E0);
+    background: -webkit-linear-gradient(to right, #8E2DE2, #6b3ace);
+    background: linear-gradient(to right, #8E2DE2, #6b3ace);
     color: white!important;
-    text-transform: uppercase;
     font-size: 1.1rem;
     letter-spacing: 1px;
 }
@@ -24,12 +22,21 @@
     font-size: 1rem;
 }
 
+.quiz-page-fix-side {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='800 400 2000 1500'%3E%3Cdefs%3E%3Cpath fill='none' stroke-width='19' stroke-opacity='0.67' id='a' d='M0-478l-413.96 717h827.92L0-478l-413.96 717h827.92z'/%3E%3C/defs%3E%3Cg style='transform-origin:center'%3E%3Cg transform='rotate(60 0 0)' style='transform-origin:center'%3E%3Cg transform='' style='transform-origin:center'%3E%3Cg transform='translate(1000 750)'%3E%3Cuse stroke='%23FF0' href='%23a' transform=''/%3E%3Cuse stroke='%23ffff25' href='%23a' transform=''/%3E%3Cuse stroke='%23ffff37' href='%23a' transform=''/%3E%3Cuse stroke='%23ffff46' href='%23a' transform=''/%3E%3Cuse stroke='%23ffff52' href='%23a' transform=''/%3E%3Cuse stroke='%23ffff5d' href='%23a' transform=''/%3E%3Cuse stroke='%23ffff67' href='%23a' transform=''/%3E%3Cuse stroke='%23ffff71' href='%23a' transform=''/%3E%3Cuse stroke='%23ffff7a' href='%23a' transform=''/%3E%3Cuse stroke='%23ffff83' href='%23a' transform=''/%3E%3Cuse stroke='%23ffff8c' href='%23a' transform=''/%3E%3Cuse stroke='%23ffff95' href='%23a' transform=''/%3E%3Cuse stroke='%23ffff9e' href='%23a' transform=''/%3E%3Cuse stroke='%23ffffa6' href='%23a' transform=''/%3E%3Cuse stroke='%23ffffae' href='%23a' transform=''/%3E%3Cuse stroke='%23ffffb6' href='%23a' transform=''/%3E%3Cuse stroke='%23ffffbf' href='%23a' transform=''/%3E%3Cuse stroke='%23ffffc7' href='%23a' transform=''/%3E%3Cuse stroke='%23ffffcf' href='%23a' transform=''/%3E%3Cuse stroke='%23ffffd7' href='%23a' transform=''/%3E%3Cuse stroke='%23ffffdf' href='%23a' transform=''/%3E%3Cuse stroke='%23ffffe7' href='%23a' transform=''/%3E%3Cuse stroke='%23ffffef' href='%23a' transform=''/%3E%3Cuse stroke='%23fffff7' href='%23a' transform=''/%3E%3Cuse stroke='%23ffffff' href='%23a' transform=''/%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.quiz-page-fix-side-two {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-800 0 2000 1500'%3E%3Cdefs%3E%3Crect fill='none' stroke-width='28.8' id='a' x='-400' y='-300' width='800' height='600'/%3E%3C/defs%3E%3Cg transform='scale(0.802)' style='transform-origin:center'%3E%3Cg transform='rotate(39.6 0 0)' style='transform-origin:center'%3E%3Cg style='transform-origin:center'%3E%3Cg transform='translate(1000 750)'%3E%3Cuse stroke='%23000' href='%23a' transform=''/%3E%3Cuse stroke='%23111111' href='%23a' transform=''/%3E%3Cuse stroke='%23222222' href='%23a' transform=''/%3E%3Cuse stroke='%23333333' href='%23a' transform=''/%3E%3Cuse stroke='%23444444' href='%23a' transform=''/%3E%3Cuse stroke='%23555555' href='%23a' transform=''/%3E%3Cuse stroke='%23666666' href='%23a' transform=''/%3E%3Cuse stroke='%23777777' href='%23a' transform=''/%3E%3Cuse stroke='%23888888' href='%23a' transform=''/%3E%3Cuse stroke='%23999999' href='%23a' transform=''/%3E%3Cuse stroke='%23aaaaaa' href='%23a' transform=''/%3E%3Cuse stroke='%23bbbbbb' href='%23a' transform=''/%3E%3Cuse stroke='%23cccccc' href='%23a' transform=''/%3E%3Cuse stroke='%23dddddd' href='%23a' transform=''/%3E%3Cuse stroke='%23eeeeee' href='%23a' transform=''/%3E%3Cuse stroke='%23ffffff' href='%23a' transform=''/%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    background-attachment: fixed;
+    background-size: cover;
+}
+
 /* Media Query */
 
 @media only screen and (min-width: 768px) {
-    .question-page-main-back-container {
-        background-color: rgba(245, 245, 245, 0.95);
-    }
     .question-row a:first-child {
         font-size: 1.2rem;
     }

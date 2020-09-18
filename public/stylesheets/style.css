@@ -35,8 +35,7 @@ html, body {
 
 .choose-text h2 {
   font-size: 1.5rem;
-  margin: 80px auto;
-  color: var(--purple-color);
+  margin: 50px auto;
   font-weight: 400;
   border-top: 1px solid var(--purple-color);
 }
@@ -60,6 +59,10 @@ html, body {
   color: var(--purple-color);
 }
 
+.card-body {
+  padding: 0.8rem;
+}
+
 .container a {
   text-decoration: none;
   text-transform: none;
@@ -68,7 +71,7 @@ html, body {
 }
 
 footer {
-  height: 100px;
+  height: 60px;
   background-color: rgb(36, 34, 34);
   color: white;
   display: flex;

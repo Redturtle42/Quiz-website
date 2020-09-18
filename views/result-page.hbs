@@ -1,26 +1,30 @@
-<body class="question-background">
+<body class="result-background">
 
-    <div
-        class="container question-page-main-back-container rounded col-12 col-md-10 col-lg-6 col-xl-4 result-container index-svg-background">
+    <div class="container-fluid result-container index-svg-background text-light">
         <div class="type-of-quiz text-center">
             <span class="mt-4 mb-4 p-4">
-                <h3 class="font-weight-bold">{{typeOfQuiz}}</h3>
+                <h3 class="font-weight-bold">{{typeOfQuiz}} QUIZ</h3>
             </span>
         </div>
         <div class="d-flex align-items-center p-2">
             <div class="list-group container p-0 mt-1 mb-1">
                 <div class="list-group question-row">
                     <a class="border-0 list-group-item mb-4 text-center rounded " disabled>
-                        <h4 class="mb-4">Congratulations!</h4>
-                        <h5>Your score
-                            is : {{correctAnswers}} / {{arrayOfSelectedAnswers.length}} </h5>
+
+                        <h4 class="text-light font-weight-bold">YOUR SCORE IS : {{correctAnswers}} /
+                            {{arrayOfSelectedAnswers.length}}
+                        </h4><br>
                         <p>You answered {{percent}}&#x25; of all questions correctly.
                         </p>
                     </a>
                 </div>
                 <span class="d-flex justify-content-center mt-4 font-weight-bolder ">
-                    <a type="submit" href="stat/{{typeOfQuiz}}" class="btn btn-warning m-3"> SEE STATISTICS</a>
-                    <a type="submit" href="/" class="btn btn-success m-3"> START A NEW QUIZ</a>
+                    <p><a type="submit" href="stat/{{typeOfQuiz}}"
+                            class="btn btn-outline-info mr-2 text-center text-light">
+                            See
+                            Statistics</a></p>
+                    <p> <a type="submit" href="/" class="btn btn-outline-primary ml-2 text-center text-light">Start New
+                            Quiz</a></p>
                 </span>
             </div>
         </div>
