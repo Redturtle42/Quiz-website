@@ -7,13 +7,13 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var quizPageRouter = require('./routes/quiz');
 var resultPageRouter = require('./routes/result');
+var statPageRouter = require('./routes/stat');
 
 var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
-
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -26,6 +26,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/quiz', quizPageRouter);
 app.use('/result', resultPageRouter);
+app.use('/stat', statPageRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
