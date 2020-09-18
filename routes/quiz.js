@@ -7,6 +7,7 @@ const { json } = require('express');
 const router = express.Router();
 
 /* GET quiz page. */
+
 router.get('/:id', async function (req, res, next) {
     const size = req.query.size;
     const title_id = req.params.id;
