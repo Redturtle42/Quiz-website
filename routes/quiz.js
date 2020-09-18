@@ -23,18 +23,17 @@ router.get('/:id', async function (req, res, next) {
                 db_response[i].answer = answer_list;
             }
             shuffle(db_response);
-
             db_response = db_response.slice(0, size);
             return db_response;
-
         }).catch((err) => {
             console.log('ERROR:', err);
         })
+
     Handlebars.registerHelper('incremented', function (index) {
         index++;
         return index;
     });
-    console.log(quiz_list);
+
     res.render('quiz-page', { title: "QUIZ", item_list: quiz_list });
 
 });
