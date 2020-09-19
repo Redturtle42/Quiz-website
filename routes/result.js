@@ -3,12 +3,14 @@ const knex = require('../db/knex');
 const router = express.Router();
 
 const weak = "Ehhr! Don't give up! You need more practice!";
-const acceptable = "You're on the right track...";
+const acceptable = "You're on the right way...";
 const good = "You seem to be interested in what you do. It only takes a little to perfect your knowledge.";
 const perfect = "Wow! You are very clever! Keep it up!";
 
 router.post('/', async function (req, res, next) {
-    const arrayOfSelectedAnswers = Object.entries(req.body);       //Parse object to array
+    // Parse object from req.body to array. (key = quiz.id, value = selected answer)
+    // {'1': '0', ..}   =>   [['1', '0'], ..]
+    const arrayOfSelectedAnswers = Object.entries(req.body);
     let correctAnswers = 0;
 
     for (let i = 0; i < arrayOfSelectedAnswers.length; i++) {
@@ -16,9 +18,10 @@ router.post('/', async function (req, res, next) {
         const user_answer = arrayOfSelectedAnswers[i][1];
 
         let correct_answer = await knex('quiz')
-            .select('is_correct', 'quiz.question').from('quiz')
+            .select('is_correct').from('quiz')
             .where('quiz.id', '=', question_id)
-        correct_answer = correct_answer[0].is_correct;      //unpack RowDataPacket
+        //unpack RowDataPacket
+        correct_answer = correct_answer[0].is_correct;
 
         if (user_answer == correct_answer) {
             correctAnswers++;
@@ -36,37 +39,35 @@ router.post('/', async function (req, res, next) {
         .join('quiz', 'quiz.category_id', '=', 'categories.id')
         .where('categories.id', '=', idOfQuizType)
         .groupBy('categories.type')
-    typeOfQuiz = typeOfQuiz[0].type;     //unpack RowDataPacket
+    //unpack RowDataPacket
+    typeOfQuiz = typeOfQuiz[0].type;
 
-    const calculatePersentage = () => {
-        const x = (correctAnswers / arrayOfSelectedAnswers.length) * 100;
-        return x;
-    };
-    const perc = calculatePersentage();
+    const percent = (correctAnswers / arrayOfSelectedAnswers.length) * 100;
 
     const percentageClassification = () => {
-        if (perc <= 25) {
+        if (percent <= 25) {
             return weak;
-        } else if (25 < perc && perc <= 50) {
+        } else if (25 < percent && percent <= 50) {
             return acceptable;
-        } else if (50 < perc && perc <= 75) {
+        } else if (50 < percent && percent <= 75) {
             return good;
         } else {
             return perfect;
         }
     };
 
+    // save statistics data to database (stat table)
     const statistic = {
         type_id: idOfQuizType,
         type_name: typeOfQuiz,
         number_of_question: arrayOfSelectedAnswers.length,
         number_of_correct: correctAnswers,
-        percentage: perc
+        percentage: percent
     };
 
     await knex('stat').insert(statistic);
 
-    res.render('result-page', { title: "Result", correctAnswers, arrayOfSelectedAnswers, typeOfQuiz, percent: perc, percentText: percentageClassification() });
+    res.render('result-page', { title: "Result", correctAnswers, arrayOfSelectedAnswers, typeOfQuiz, percent, percentText: percentageClassification() });
 });
 
 module.exports = router;
