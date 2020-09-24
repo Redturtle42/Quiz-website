@@ -47,7 +47,7 @@
 }
 
 .animated-title>div div {
-    font-size: 6vmin;
+    font-size: 5vmin;
     padding: 2vmin 0;
     position: absolute;
 }
@@ -87,6 +87,11 @@
 .inline-color {
     color: var(--purple-color);
     font-weight: 600;
+}
+
+.inline-color-test {
+    color: rgb(163, 221, 54);
+    font-weight: 500;
 }
 
 /* Fade-up texts */
@@ -135,10 +140,10 @@
         color: rgba(34, 34, 34);
         font-family: 'Raleway', sans-serif;
         height: 100vh;
-        left: 25%;
+        left: 20%;
         position: absolute;
         top: 70%;
-        transform: translate(-25%, -50%);
+        transform: translate(-20%, -50%);
         width: 100vmin;
         padding-left: unset;
     }
@@ -146,6 +151,6 @@
         font-weight: 500;
     }
     .animated-title>div.text-bottom div {
-        font-size: 3.5rem;
+        font-size: 3rem;
     }
 }
