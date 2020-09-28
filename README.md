@@ -49,4 +49,10 @@ knex seed:run
 `npm start`
 
 ## Let's some quiz!
-Open http://localhost:3004 
+Open http://localhost:3004
+
+<img src="images/first.png" width="400px">
+<img src="images/second.png" width="400px">
+<img src="images/third.png" width="400px">
+<img src="images/forth.png" width="400px">
+<img src="images/fifth.png" width="400px">
