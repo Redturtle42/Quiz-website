@@ -1,5 +1,6 @@
 const express = require('express');
 const knex = require('../db/knex');
+const service = require('../service/mysqlService')
 const router = express.Router();
 
 const weak = "Ehhr! Don't give up! You need more practice!";
@@ -17,30 +18,16 @@ router.post('/', async function (req, res, next) {
         const question_id = arrayOfSelectedAnswers[i][0];
         const user_answer = arrayOfSelectedAnswers[i][1];
 
-        let correct_answer = await knex('quiz')
-            .select('is_correct').from('quiz')
-            .where('quiz.id', '=', question_id)
-        //unpack RowDataPacket
-        correct_answer = correct_answer[0].is_correct;
+        let correct_answer = await service.getCorrectAnswer(question_id);
 
         if (user_answer == correct_answer) {
             correctAnswers++;
         }
     };
 
-    let idOfQuizType = await knex('quiz')
-        .select('category_id').from('quiz')
-        .where('id', '=', arrayOfSelectedAnswers[0][0])
-    idOfQuizType = idOfQuizType[0].category_id;
+    const idOfQuizType = await service.getIdOfQuizType(arrayOfSelectedAnswers);
 
-    let typeOfQuiz = await knex('categories')
-        .select('categories.type')
-        .from('categories')
-        .join('quiz', 'quiz.category_id', '=', 'categories.id')
-        .where('categories.id', '=', idOfQuizType)
-        .groupBy('categories.type')
-    //unpack RowDataPacket
-    typeOfQuiz = typeOfQuiz[0].type;
+    const typeOfQuiz = await service.getTypeOfQuiz(idOfQuizType);
 
     const percent = (correctAnswers / arrayOfSelectedAnswers.length) * 100;
 
@@ -65,7 +52,7 @@ router.post('/', async function (req, res, next) {
         percentage: percent
     };
 
-    await knex('stat').insert(statistic);
+    await service.saveStatistic(statistic);
 
     res.render('result-page', { title: "Result", correctAnswers, arrayOfSelectedAnswers, typeOfQuiz, percent, percentText: percentageClassification() });
 });
