@@ -15,6 +15,7 @@ router.get('/:id', async function (req, res, next) {
     const title_id = req.params.id;
 
     const quiz_list = await service.getQuizList(size, title_id);
+    console.log(quiz_list);
     //increment index of quiz_list by one to display proper value (to not start with 0).
     Handlebars.registerHelper('incremented', function (index) {
         index++;
