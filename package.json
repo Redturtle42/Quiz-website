@@ -14,9 +14,7 @@
     "http-errors": "~1.6.3",
     "knex": "^0.21.5",
     "migrate-mongo": "^8.1.2",
-    "mongo": "^0.1.0",
     "mongodb": "^3.6.2",
-    "mongoose": "^5.10.7",
     "morgan": "~1.9.1",
     "mysql": "^2.18.1"
   },

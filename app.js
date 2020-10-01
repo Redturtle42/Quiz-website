@@ -3,24 +3,6 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-/* const mongoose = require('mongoose'); */
-/* const service = require('./service/mongoService') */
-
-
-/* mongo */
-
-/* mongoose.connect('mongodb://localhost:27017', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useFindAndModify: false,
-  useCreateIndex: true
-});
-
-const connection = mongoose.connection;
-
-connection.once("open", function () {
-  console.log("MongoDB database connection established successfully");
-}); */
 
 var indexRouter = require('./routes/index');
 var quizPageRouter = require('./routes/quiz');
