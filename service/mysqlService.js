@@ -15,7 +15,7 @@ const getCategories = () => {
 /* ***************** quiz.js ***************** */
 
 // this array contains the elements of quiz table
-const getQuizList = (size, title_id) => {
+const getQuizList = (size, title_id, shuffle) => {
 
     return knex('quiz')
         .select('quiz.*', 'categories.type').from('quiz')
@@ -23,6 +23,10 @@ const getQuizList = (size, title_id) => {
         .where('categories.type', title_id)
         // runs when the query success. The db_response is a local variable that contains the result of the query (every item of the quiz table, which contains the same category_id).
         .then((db_response) => {
+            // change the order of questions
+            shuffle(db_response);
+            // cut back to the given size
+            db_response = db_response.slice(0, size);
             // iterate over the db_response
             for (let i = 0; i < db_response.length; i++) {
                 //unpack and parse the answer JSON string into array of answer object.
@@ -32,20 +36,15 @@ const getQuizList = (size, title_id) => {
                 // override json-string (quiz table, answer property) value with list of answers. (After that, this column not a string-json anymore but array of objects.)
                 db_response[i].answer = answer_list;
             }
-            // change the order of questions
-            shuffle(db_response);
-            // cut back to the given size
-            db_response = db_response.slice(0, size);
             // return the modified list to quiz_list.
             return db_response;
-
             // logging the error if query fails (line 15-18)
         }).catch((err) => {
             console.log('ERROR:', err);
         })
 };
 
-function shuffle(list_to_shuffle) {
+/* function shuffle(list_to_shuffle) {
     let new_position, temporary_storage, i;
     for (i = list_to_shuffle.length - 1; i > 0; i--) {
         new_position = Math.floor(Math.random() * (i + 1));
@@ -54,7 +53,7 @@ function shuffle(list_to_shuffle) {
         list_to_shuffle[new_position] = temporary_storage;
     }
     return list_to_shuffle;
-}
+} */
 
 /* ***************** result.js ***************** */
 

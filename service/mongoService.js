@@ -26,7 +26,7 @@ const getCategories = () => {
 
 /* ***************** quiz.js ***************** */
 
-const getQuizList = (size, title_id) => {
+const getQuizList = (size, title_id, shuffle) => {
 
     const questions = db.collection('quiz').find().toArray()
         .then(results => {
@@ -38,7 +38,7 @@ const getQuizList = (size, title_id) => {
     return questions;
 };
 
-function shuffle(list_to_shuffle) {
+/* function shuffle(list_to_shuffle) {
     let new_position, temporary_storage, i;
     for (i = list_to_shuffle.length - 1; i > 0; i--) {
         new_position = Math.floor(Math.random() * (i + 1));
@@ -47,6 +47,6 @@ function shuffle(list_to_shuffle) {
         list_to_shuffle[new_position] = temporary_storage;
     }
     return list_to_shuffle;
-}
+} */
 
 module.exports = { getCategories, getQuizList }
