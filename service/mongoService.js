@@ -1,10 +1,6 @@
 const express = require('express');
 const MongoClient = require('mongodb').MongoClient;
-
-const weak = "Ehhr! Don't give up! You need more practice!";
-const acceptable = "You're on the right way...";
-const good = "You seem to be interested in what you do. It only takes a little to perfect your knowledge.";
-const perfect = "Wow! You are very clever! Keep it up!";
+const { ObjectId } = require('mongodb');
 
 let db;
 MongoClient.connect("mongodb://127.0.0.1:27017/", {
@@ -38,8 +34,50 @@ const getQuizList = (size, title_id, shuffle) => {
             }
             return results;
         })
-    console.log('questions:', questions);
     return questions;
 };
 
-module.exports = { getCategories, getQuizList }
+/* ***************** result.js ***************** */
+
+let getCorrectAnswer = (question_id) => {
+    const query = { _id: ObjectId(question_id) };
+
+    return db.collection('quiz').find(query).toArray()
+        .then(results => {
+            for (answer of results[0].answer) {
+                if (answer.is_correct == true) {
+                    return answer.id
+                }
+            }
+        })
+};
+
+let getIdOfQuizType = (arrayOfSelectedAnswers) => {
+    /*   return knex('quiz')
+          .select('category_id').from('quiz')
+          .where('id', '=', arrayOfSelectedAnswers[0][0])
+          .then(res => {
+              return res[0].category_id;
+          }) */
+};
+
+let getTypeOfQuiz = (idOfQuizType) => {
+    /* return knex('categories')
+        .select('categories.type')
+        .from('categories')
+        .join('quiz', 'quiz.category_id', '=', 'categories.id')
+        .where('categories.id', '=', idOfQuizType)
+        .groupBy('categories.type')
+        .then(res => {
+            return res[0].type;
+        }) */
+};
+
+const saveStatistic = (statistic) => {
+/*     return knex('stat').insert(statistic)
+ */};
+
+/* ***************** stat.js ***************** */
+
+
+module.exports = { getCategories, getQuizList, getCorrectAnswer }

@@ -1,7 +1,8 @@
 const express = require('express');
-const knex = require('../db/knex');
-const service = require('../service/mysqlService')
 const router = express.Router();
+//const service = require('../service/mysqlService')
+const service = require('../service/mongoService')
+
 
 const weak = "Ehhr! Don't give up! You need more practice!";
 const acceptable = "You're on the right way...";
@@ -12,14 +13,13 @@ router.post('/', async function (req, res, next) {
     // Parse object from req.body to array. (key = quiz.id, value = selected answer)
     // {'1': '0', ..}   =>   [['1', '0'], ..]
     const arrayOfSelectedAnswers = Object.entries(req.body);
+    console.log(arrayOfSelectedAnswers);
     let correctAnswers = 0;
 
     for (let i = 0; i < arrayOfSelectedAnswers.length; i++) {
         const question_id = arrayOfSelectedAnswers[i][0];
         const user_answer = arrayOfSelectedAnswers[i][1];
-
         let correct_answer = await service.getCorrectAnswer(question_id);
-
         if (user_answer == correct_answer) {
             correctAnswers++;
         }
