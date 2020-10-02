@@ -27,26 +27,19 @@ const getCategories = () => {
 /* ***************** quiz.js ***************** */
 
 const getQuizList = (size, title_id, shuffle) => {
-
-    const questions = db.collection('quiz').find().toArray()
+    const query = { type: title_id };
+    const questions = db.collection('quiz').find(query).toArray()
         .then(results => {
-            results = results.slice(0, size);
             shuffle(results);
+            results = results.slice(0, size);
+            for (let i = 0; i < results.length; i++) {
+                const answers = results[i].answer;
+                shuffle(answers);
+            }
             return results;
         })
     console.log('questions:', questions);
     return questions;
 };
-
-/* function shuffle(list_to_shuffle) {
-    let new_position, temporary_storage, i;
-    for (i = list_to_shuffle.length - 1; i > 0; i--) {
-        new_position = Math.floor(Math.random() * (i + 1));
-        temporary_storage = list_to_shuffle[i];
-        list_to_shuffle[i] = list_to_shuffle[new_position];
-        list_to_shuffle[new_position] = temporary_storage;
-    }
-    return list_to_shuffle;
-} */
 
 module.exports = { getCategories, getQuizList }
