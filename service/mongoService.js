@@ -52,32 +52,42 @@ let getCorrectAnswer = (question_id) => {
         })
 };
 
-let getIdOfQuizType = (arrayOfSelectedAnswers) => {
-    /*   return knex('quiz')
-          .select('category_id').from('quiz')
-          .where('id', '=', arrayOfSelectedAnswers[0][0])
-          .then(res => {
-              return res[0].category_id;
-          }) */
+let getTypeOfQuiz = (question_id) => {
+    const query = { _id: ObjectId(question_id) };
+    return db.collection('quiz').find(query).toArray()
+        .then(results => {
+            return results[0].type;
+        })
 };
 
-let getTypeOfQuiz = (idOfQuizType) => {
-    /* return knex('categories')
-        .select('categories.type')
-        .from('categories')
-        .join('quiz', 'quiz.category_id', '=', 'categories.id')
-        .where('categories.id', '=', idOfQuizType)
-        .groupBy('categories.type')
-        .then(res => {
-            return res[0].type;
-        }) */
-};
 
 const saveStatistic = (statistic) => {
-/*     return knex('stat').insert(statistic)
- */};
+    return db.collection('stat').insertOne(statistic)
+};
 
 /* ***************** stat.js ***************** */
 
+let getStatistic = (typeOfQuiz) => {
 
-module.exports = { getCategories, getQuizList, getCorrectAnswer }
+    const stat = db.collection('stat').aggregate(
+        [{
+            $group: {
+                _id: typeOfQuiz,
+                avg: { $avg: "$percentage" },
+            }
+        },
+        {
+            $project: {
+                rounded: { $round: ["$avg", 1] }
+            }
+        }]
+    ).toArray()
+        .then(results => {
+            console.log('results', results);
+            return results[0].rounded;
+        });
+    console.log('stat', stat);
+    return stat;
+};
+
+module.exports = { getCategories, getQuizList, getCorrectAnswer, getTypeOfQuiz, saveStatistic, getStatistic }

@@ -1,7 +1,6 @@
 exports.up = function (knex) {
     return knex.schema.createTable('stat', table => {
         table.increments('_id').primary();
-        table.string('type_id', 255).notNull();
         table.string('type_name', 255).notNull();
         table.integer('number_of_question').unsigned().notNull();
         table.integer('number_of_correct').unsigned().notNull();

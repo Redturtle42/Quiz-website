@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-//const service = require('../service/mysqlService')
-const service = require('../service/mongoService')
+const service = require('../service/mysqlService')
+//const service = require('../service/mongoService')
 
 
 const weak = "Ehhr! Don't give up! You need more practice!";
@@ -13,7 +13,6 @@ router.post('/', async function (req, res, next) {
     // Parse object from req.body to array. (key = quiz.id, value = selected answer)
     // {'1': '0', ..}   =>   [['1', '0'], ..]
     const arrayOfSelectedAnswers = Object.entries(req.body);
-    console.log(arrayOfSelectedAnswers);
     let correctAnswers = 0;
 
     for (let i = 0; i < arrayOfSelectedAnswers.length; i++) {
@@ -25,10 +24,7 @@ router.post('/', async function (req, res, next) {
         }
     };
 
-    const idOfQuizType = await service.getIdOfQuizType(arrayOfSelectedAnswers);
-
-    const typeOfQuiz = await service.getTypeOfQuiz(idOfQuizType);
-
+    const typeOfQuiz = await service.getTypeOfQuiz(arrayOfSelectedAnswers[0][0]);
     const percent = (correctAnswers / arrayOfSelectedAnswers.length) * 100;
 
     const percentageClassification = () => {
@@ -45,7 +41,6 @@ router.post('/', async function (req, res, next) {
 
     // save statistics data to database (stat table)
     const statistic = {
-        type_id: idOfQuizType,
         type_name: typeOfQuiz,
         number_of_question: arrayOfSelectedAnswers.length,
         number_of_correct: correctAnswers,

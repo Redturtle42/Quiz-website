@@ -41,7 +41,6 @@ const getQuizList = (size, title_id, shuffle) => {
 
 /* ***************** result.js ***************** */
 
-
 let getCorrectAnswer = (question_id) => {
     return knex('quiz')
         .select('is_correct').from('quiz')
@@ -51,26 +50,30 @@ let getCorrectAnswer = (question_id) => {
         })
 };
 
-
-let getIdOfQuizType = (arrayOfSelectedAnswers) => {
+let getIdOfQuizType = (questionId) => {
     return knex('quiz')
         .select('category_id').from('quiz')
-        .where('_id', '=', arrayOfSelectedAnswers[0][0])
+        .where('_id', '=', questionId)
         .then(res => {
             return res[0].category_id;
         })
 };
 
-let getTypeOfQuiz = (idOfQuizType) => {
+const getCategory = (categoryId) => {
     return knex('categories')
         .select('categories.type')
         .from('categories')
         .join('quiz', 'quiz.category_id', '=', 'categories._id')
-        .where('categories._id', '=', idOfQuizType)
+        .where('categories._id', '=', categoryId)
         .groupBy('categories.type')
         .then(res => {
             return res[0].type;
         })
+};
+
+let getTypeOfQuiz = async (questionId) => {
+    const categoryId = await getIdOfQuizType(questionId);
+    return getCategory(categoryId);
 };
 
 const saveStatistic = (statistic) => {
@@ -83,9 +86,8 @@ let getStatistic = (typeOfQuiz) => {
     return knex('stat')
         .select().from("stat")
         .avg("percentage", { as: "percentage" })
-        .join('categories', 'categories._id', '=', 'type_id')
-        .where('categories.type', "=", typeOfQuiz)
-        .groupBy("type_id")
+        .where('stat.type_name', "=", typeOfQuiz)
+        .groupBy('stat.type_name')
         .then(res => {
             // cut of decimal values an unpack RowDataPacket
             console.log(res);
