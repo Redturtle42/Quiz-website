@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const service = require('../service/mysqlService')
-//const service = require('../service/mongoService')
+//const service = require('../service/mysqlService')
+const service = require('../service/mongoService')
 
 
 const weak = "Ehhr! Don't give up! You need more practice!";

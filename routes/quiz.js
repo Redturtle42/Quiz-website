@@ -1,7 +1,7 @@
 const express = require('express');
 const Handlebars = require('hbs');
-//const service = require('../service/mongoService')
-const service = require('../service/mysqlService')
+const service = require('../service/mongoService')
+//const service = require('../service/mysqlService')
 
 const router = express.Router();
 
@@ -18,7 +18,6 @@ router.get('/:id', async function (req, res, next) {
         index++;
         return index;
     });
-    console.log('quiz-list', quiz_list);
     res.render('quiz-page', { title: "QUIZ", item_list: quiz_list });
 });
 

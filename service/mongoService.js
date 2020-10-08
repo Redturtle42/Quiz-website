@@ -68,7 +68,6 @@ const saveStatistic = (statistic) => {
 /* ***************** stat.js ***************** */
 
 let getStatistic = (typeOfQuiz) => {
-
     const stat = db.collection('stat').aggregate(
         [{
             $group: {
@@ -83,10 +82,8 @@ let getStatistic = (typeOfQuiz) => {
         }]
     ).toArray()
         .then(results => {
-            console.log('results', results);
             return results[0].rounded;
         });
-    console.log('stat', stat);
     return stat;
 };
 
