@@ -60,7 +60,6 @@ let getTypeOfQuiz = (question_id) => {
         })
 };
 
-
 const saveStatistic = (statistic) => {
     return db.collection('stat').insertOne(statistic)
 };

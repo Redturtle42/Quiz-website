@@ -1,9 +1,7 @@
 const express = require('express');
-const Handlebars = require('hbs');
-const service = require('../service/mongoService')
-//const service = require('../service/mysqlService')
-
 const router = express.Router();
+const Handlebars = require('hbs');
+const service = require('../src/db');
 
 router.get('/:id', async function (req, res, next) {
 
@@ -11,7 +9,6 @@ router.get('/:id', async function (req, res, next) {
     const size = req.query.size;
     //what kind of quiz (HTML, CSS, JS)  
     const title_id = req.params.id;
-
     const quiz_list = await service.getQuizList(size, title_id, shuffle);
     //increment index of quiz_list by one to display proper value (to not start with 0).
     Handlebars.registerHelper('incremented', function (index) {

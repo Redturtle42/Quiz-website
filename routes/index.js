@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const service = require('../service/mongoService')
-//const service = require('../service/mysqlService')
+const service = require('../src/db');
 
 router.get('/', async function (req, res, next) {
   const categories = await service.getCategories();

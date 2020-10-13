@@ -1,8 +1,6 @@
 const express = require('express');
-//const service = require('../service/mysqlService')
-const service = require('../service/mongoService')
-
 const router = express.Router();
+const service = require('../src/db');
 
 router.get('/:type', async function (req, res, next) {
     const typeOfQuiz = req.params.type;

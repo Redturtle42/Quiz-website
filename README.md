@@ -54,7 +54,7 @@ knex seed:run
 ```
 
 ## Start application
-`npm start`
+`DB=mysql npm start`
 
 ## Let's some quiz!
 Open http://localhost:3005
@@ -116,7 +116,7 @@ cd ..
 ```
 
 ## Start application
-`npm start`
+`DB=mongo npm start`
 
 ## Let's some quiz!
 Open http://localhost:3005
