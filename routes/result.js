@@ -1,7 +1,6 @@
 const express = require('express');
-const knex = require('../db/knex');
-const service = require('../service/mysqlService')
 const router = express.Router();
+const service = require('../src/db');
 
 const weak = "Ehhr! Don't give up! You need more practice!";
 const acceptable = "You're on the right way...";
@@ -17,18 +16,13 @@ router.post('/', async function (req, res, next) {
     for (let i = 0; i < arrayOfSelectedAnswers.length; i++) {
         const question_id = arrayOfSelectedAnswers[i][0];
         const user_answer = arrayOfSelectedAnswers[i][1];
-
         let correct_answer = await service.getCorrectAnswer(question_id);
-
         if (user_answer == correct_answer) {
             correctAnswers++;
         }
     };
 
-    const idOfQuizType = await service.getIdOfQuizType(arrayOfSelectedAnswers);
-
-    const typeOfQuiz = await service.getTypeOfQuiz(idOfQuizType);
-
+    const typeOfQuiz = await service.getTypeOfQuiz(arrayOfSelectedAnswers[0][0]);
     const percent = (correctAnswers / arrayOfSelectedAnswers.length) * 100;
 
     const percentageClassification = () => {
@@ -45,7 +39,6 @@ router.post('/', async function (req, res, next) {
 
     // save statistics data to database (stat table)
     const statistic = {
-        type_id: idOfQuizType,
         type_name: typeOfQuiz,
         number_of_question: arrayOfSelectedAnswers.length,
         number_of_correct: correctAnswers,

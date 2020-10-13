@@ -20,11 +20,11 @@
                                     {{question}}
                                 </a>
                                 <div class="btn-group-toggle btn-group-toggle-width" data-toggle="buttons">
-                                    <input type="radio" class="radioclass" name="{{id}}" autocomplete="off" value="0"
+                                    <input type="radio" class="radioclass" name="{{_id}}" autocomplete="off" value="0"
                                         checked hidden>
                                     {{#each answer}}
                                     <label class="btn btn-light d-block mt-2 mb-2 text-dark">
-                                        <input type="radio" name="{{../id}}" id="{{this.id}}" autocomplete="off"
+                                        <input type="radio" name="{{../_id}}" id="{{this.id}}" autocomplete="off"
                                             value="{{this.id}}">
                                         {{this.text}}
                                     </label>
