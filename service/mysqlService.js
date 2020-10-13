@@ -90,7 +90,6 @@ let getStatistic = (typeOfQuiz) => {
         .groupBy('stat.type_name')
         .then(res => {
             // cut of decimal values an unpack RowDataPacket
-            console.log(res);
             return Math.round(res[0].percentage);
         })
 };
