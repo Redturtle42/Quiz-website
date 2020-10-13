@@ -18,7 +18,7 @@ git clone git@github.com:Redturtle42/Quiz-website.git
 ### Dependencies
 This project requires a running MySQL instance. If you don't have one set up locally, you can start always a Docker container by the following command:
 ```sh
-docker run --name <container-name> -p 3306:3306 MYSQL_ROOT_PASSWORD=<root user's password> -d mysql
+docker run --name <container-name> -p 3306:3306 -e MYSQL_ROOT_PASSWORD=<root user's password> -d mysql
 ```
 
 ### Database
